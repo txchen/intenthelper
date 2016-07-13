@@ -1,0 +1,2 @@
+# intenthelper
+cordova-plugin-intenthelper
