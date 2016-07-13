@@ -1,0 +1,23 @@
+{
+  "name": "cordova-plugin-intenthelper",
+  "version": "1.0.0",
+  "description": "deal with android intent in cordova",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/txchen/ad-gap.git"
+  },
+  "cordova": {
+    "id": "cordova-plugin-intenthelper",
+    "platforms": [
+      "android"
+    ]
+  },
+  "author": "Tianxiang Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/txchen/intenthelper/issues"
+  },
+  "homepage": "https://github.com/txchen/intenthelper#readme"
+}

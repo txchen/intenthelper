@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest"
+    xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+    id="cordova-plugin-intenthelper"
+    version="1.0.0">
+
+    <name>Intenthelper</name>
+    <description>Adgap plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,intent,helper</keywords>
+    <repo>https://github.com/txchen/intenthelper</repo>
+    <issue>https://github.com/txchen/intenthelper/issues</issue>
+
+    <js-module src="www/intenthelper.js" name="intenthelper">
+        <clobbers target="intenthelper" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Intenthelper">
+                <param name="android-package" value="com.intenthelper.Intenthelper"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+        </config-file>
+
+        <source-file src="src/android/Intenthelper.java" target-dir="src/com/intenthelper/"/>
+    </platform>
+
+    <dependency id="cordova-plugin-googleplayservices" version="26.0.0" />
+
+</plugin>
