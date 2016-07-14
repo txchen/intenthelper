@@ -2,6 +2,7 @@ package com.intenthelper;
 
 import org.apache.cordova.*;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.Context;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +19,20 @@ public class Intenthelper extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("getAdsInfo")) {
+        if (action.equals("sendBroadcast")) {
+            String intentAction = data.optString(0);
+            JSONObject extras = data.optJSONObject(1);
+
+            Intent intent = new Intent(intentAction);
+            if (extras != null) {
+                for (int i = 0; i < extras.names().length(); i++) {
+                    String keyName = extras.names().getString(i);
+                    intent.putExtra(keyName, extras.getString(keyName));
+                }
+            }
+            getActivity().getApplicationContext().sendBroadcast(intent);
+            return true;
+        } else if (action.equals("getAdsInfo")) {
             _getAdsInfoCallbackContext = callbackContext;
             Thread thr = new Thread(new Runnable() {
                 @Override
