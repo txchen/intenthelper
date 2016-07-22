@@ -28,3 +28,11 @@ intenthelper.getAdsInfo(
   }
 )
 ```
+
+Check if a package is installed or not:
+
+```js
+intenthelper.checkPackage('com.awesome.pkg', function (installed) {
+  // installed is boolean
+})
+```

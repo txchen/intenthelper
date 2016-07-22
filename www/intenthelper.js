@@ -7,4 +7,7 @@ module.exports = {
   getAdsInfo: function (successCallback, errorCallback) {
     cordova.exec(successCallback, errorCallback, 'Intenthelper', 'getAdsInfo', [])
   },
+  checkPackage: function (packageName, resultCallback, errorCallback) {
+    cordova.exec(resultCallback, errorCallback, 'Intenthelper', 'checkPackageInstalled', [packageName])
+  }
 }

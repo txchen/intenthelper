@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.util.Log;
+import android.content.pm.PackageManager;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 
 public class Intenthelper extends CordovaPlugin {
@@ -57,6 +58,19 @@ public class Intenthelper extends CordovaPlugin {
             PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
             pluginResult.setKeepCallback(true);
             callbackContext.sendPluginResult(pluginResult);
+            return true;
+        } else if (action.equals("checkPackageInstalled")) {
+            PackageManager pm = getActivity().getPackageManager();
+            boolean appInstalled;
+            try {
+                pm.getPackageInfo(data.optString(0), PackageManager.GET_ACTIVITIES);
+                appInstalled = true;
+            }
+            catch (PackageManager.NameNotFoundException e) {
+                appInstalled = false;
+            }
+            PluginResult result = new PluginResult(PluginResult.Status.OK, appInstalled);
+            callbackContext.sendPluginResult(result);
             return true;
         } else {
             return false;
