@@ -19,7 +19,7 @@ public class Intenthelper extends CordovaPlugin {
     private CallbackContext _getAdsInfoCallbackContext;
 
     @Override
-    public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray data, final CallbackContext callbackContext) throws JSONException {
         if (action.equals("sendBroadcast")) {
             String intentAction = data.optString(0);
             JSONObject extras = data.optJSONObject(1);
